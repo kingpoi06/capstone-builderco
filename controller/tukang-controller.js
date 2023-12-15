@@ -28,20 +28,33 @@ const tukangController = {
         }
     },
     create: async (req, res) => {
+        const { jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi } = req.body;
+        const sql = "INSERT INTO tukang (jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi) VALUES (?, ?, ?, ?, ?, ?)";
+    
+        const connection = await pool.getConnection();
+    
         try {
-            const { jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi } = req.body
-            const sql = "insert into tukang (jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi) values (?, ?, ?, ?, ?, ?)"
-            const [rows, fields] = await pool.query(sql, [jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi])
+            await connection.beginTransaction();
+    
+            const [rows, fields] = await connection.query(sql, [jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi]);
+    
+            await connection.commit();
+    
             res.json({
                 data: rows
-            })
+            });
         } catch (error) {
-            console.log(error)
+            await connection.rollback();
+            console.log(error);
             res.json({
                 status: "error"
-            })
+            });
+        } finally {
+            connection.release();
         }
     },
+
+    
     update: async (req, res) => {
         try {
             const { jasa_pelayanan, urlgambar, rating, kota, alamat, deskripsi } = req.body
