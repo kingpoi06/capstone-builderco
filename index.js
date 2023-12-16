@@ -1,19 +1,24 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const cors = require("cors"); // Add this line
 
-require('dotenv').config()
+const app = express();
 
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
+require('dotenv').config();
 
-const tukangRouter = require('./routes/tukang-router')
-const authRouter = require('./routes/auth-router')
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.use("/api/v1/tukang", tukangRouter)
-app.use("/api/v1/auth", authRouter)
+// Use CORS middleware
+app.use(cors());
 
-const PORT = process.env.PORT || 5000
+const tukangRouter = require('./routes/tukang-router');
+const authRouter = require('./routes/auth-router');
+
+app.use("/api/v1/tukang", tukangRouter);
+app.use("/api/v1/auth", authRouter);
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log("Server is running....")
-})
+    console.log("Server is running....");
+});
