@@ -9,16 +9,13 @@ cloudinary.config({
 });
 
 const images = [
-  './images/jasa-hias-halaman.jpg',
-  './images/jasa-pasang-plafon.jpg',
-  './images/jasa-pemansangan-pintu.jpg',
-  './images/jasa-pemasangan-keramik.jpg',
-  './images/jasa-pemasangan-service-ac.jpg',
-  './images/jasa-pembuatan-taman.jpg',
-  './images/jasa-pengecetan-dinding.jpg',
-  './images/jasa-perbaiki-keramik.jpg',
-  './images/jasa-perbaiki-pipa-air.jpg',
-  './images/jasa-renovasi-rumah.jpg'
+  './images/9.jasa-instalasi-listrik.jpg',
+  './images/10.jasa-interior-furniture.jpg',
+  './images/11.jasa-pembuatan-pagar.jpg',
+  './images/12.jasa-baja-ringan-atap.jpg',
+  './images/13.jasa-pengecoran.jpg',
+  './images/14.jasa-sumur-bor.jpg',
+  './images/15.jasa-buat-kolam-renang.jpg'
 ];
 
 
