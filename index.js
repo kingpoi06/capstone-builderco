@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors"); // Add this line
+const cors = require("cors");
 
 const app = express();
 
@@ -10,6 +10,9 @@ app.use(express.json());
 
 // Use CORS middleware
 app.use(cors());
+
+// Serve static files from the "public" directory
+app.use(express.static('public'));
 
 const tukangRouter = require('./routes/tukang-router');
 const authRouter = require('./routes/auth-router');
