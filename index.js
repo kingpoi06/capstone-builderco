@@ -1,16 +1,15 @@
 const express = require("express");
-const cors = require("cors"); // Add this line
+const cors = require("cors"); 
 
 const app = express();
 
 require('dotenv').config();
 
-app.use('/static', express.static(join(process.cwd(), "public")))
+// app.use('/static', express.static(join(process.cwd(), "public")))
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Use CORS middleware
 app.use(cors());
 
 const tukangRouter = require('./routes/tukang-router');
